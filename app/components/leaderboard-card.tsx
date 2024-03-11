@@ -1,6 +1,6 @@
 "use client";
 
-import { Player } from "@/types/types";
+import { Player } from "../types/types"
 import { Card } from "./ui/card";
 
 export default function LeaderboardCard({
