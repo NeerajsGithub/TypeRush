@@ -20,17 +20,24 @@ export default function GamePlayer({ gameId, name }: GameProps) {
   const [incorrectIndex, setIncorrectIndex] = useState(-1);
 
   useEffect(() => {
-    const socket = io(process.env.NEXT_PUBLIC_WEBSOCKET_URL || 'https://typerush-server.onrender.com' as string, {
-      transports: ["websocket"],
-    });
-    setIoInstance(socket);
-
-    socket.emit("join-game", gameId, name);
-
-    return () => {
-      removeListeners();
-      socket.disconnect();
-    };
+    try {
+      const socket = io(
+        process.env.NEXT_PUBLIC_WEBSOCKET_URL || 'https://typerush-server.onrender.com',
+        {
+          transports: ["websocket"],
+        }
+      );
+      setIoInstance(socket);
+  
+      socket.emit("join-game", gameId, name);
+  
+      return () => {
+        removeListeners();
+        socket.disconnect();
+      };
+    } catch (error) {
+      console.error("Error creating socket:", error);
+    }
   }, []);
 
   useEffect(() => {
