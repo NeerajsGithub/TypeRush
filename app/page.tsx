@@ -1,5 +1,6 @@
 "use client";
 
+import "./globals.css"
 import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import { Socket, io } from "socket.io-client";
@@ -52,9 +53,13 @@ export default function Home() {
     router.push(`/game/${inviteCode}`);
   }
 
+  function getstarted() {
+    toast.success("Create a game to get started.")
+  }
+
   return (
 
-    <main className="w-full mx-auto max-w-7xl">
+    <main className="w-full mx-auto max-w-7xl fade-in-down">
 
       <section className="pt-[5rem] h-[32rem] xl:h-[40rem] lg:h-[40rem] w-full rounded-md flex flex-col  md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden">
         <Spotlight
@@ -62,18 +67,18 @@ export default function Home() {
           fill="white" />
         <div className=" p-4 max-w-7xl mx-auto relative z-10 w-full pt-20  md:pt-0">
           <nav className="flex flex-col items-center gap-0 leading-none mb-10">
-            <div className="border max-w-[15rem] justify-center px-5 rounded-full mb-3 items-center aos-init aos-animate" data-aos="fade-down"><div className="relative inline-flex before:absolute before:inset-0 "><a className=" py-1 text-xs xl:text-sm lg:text-sm  font-medium inline-flex items-center justify-center border border-transparent rounded-full  text-zinc-300 hover:text-white transition duration-150 ease-in-out w-full group [background:linear-gradient(theme(colors.primary.900),_theme(colors.primary.900))_padding-box,_conic-gradient(theme(colors.primary.400),_theme(colors.primary.700)_25%,_theme(colors.primary.700)_75%,_theme(colors.primary.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-zinc-800/30 before:rounded-full before:pointer-events-none" target="_blank" href="https://github.com/chronark/highstorm"><span className="relative inline-flex items-center">TypeRush is Open Source <span className="tracking-normal text-primary-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></span></a></div></div>
+            <div className="border max-w-[15rem] justify-center px-5 rounded-full mb-3 items-center aos-init aos-animate"><div className="relative inline-flex before:absolute before:inset-0 "><a className=" py-1 text-xs xl:text-sm lg:text-sm  font-medium inline-flex items-center justify-center border border-transparent rounded-full  text-zinc-300 hover:text-white transition duration-150 ease-in-out w-full group [background:linear-gradient(theme(colors.primary.900),_theme(colors.primary.900))_padding-box,_conic-gradient(theme(colors.primary.400),_theme(colors.primary.700)_25%,_theme(colors.primary.700)_75%,_theme(colors.primary.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-zinc-800/30 before:rounded-full before:pointer-events-none" target="_blank" href="https://github.com/NeerajsGithub/TypeRush"><span className="relative inline-flex items-center">TypeRush is Open Source <span className="tracking-normal text-primary-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span></span></a></div></div>
             <h1 className="text-6xl xl:text-[8rem] lg:text-[8rem] md:text-[6rem] font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">TypeRush</h1>
-            <p className="mt-8 mb-8 text-lg text-center xl:text-2xl lg:text-2xl text-zinc-300 aos-init aos-animate" data-aos="fade-down" data-aos-delay="200">Dont drown in notifications and keep your workspace focused</p>
+            <p className="mt-8 mb-8 text-lg text-center xl:text-2xl lg:text-2xl text-zinc-300 aos-init aos-animate"  data-aos-delay="200">Dont drown in notifications and keep your workspace focused</p>
             <div className="flex flex-row  items-center max-w-xs mx-auto gap-4 sm:max-w-none sm:justify-center sm:flex-row sm:inline-flex aos-init aos-animate" data-aos="fade-down" data-aos-delay="400">
-              <a className="w-full justify-center flex items-center whitespace-nowrap transition duration-150 ease-in-out font-medium rounded-xl px-4 py-3  text-zinc-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white group" href="/overview">Get Started <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3 tracking-normal text-primary-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-              <a className="w-full transition duration-150 ease-in-out bg-opacity-25 text-zinc-200 hover:text-white bg-zinc-900 hover:bg-opacity-30" target="_blank" href="">Star on GitHub</a>
+              <a className="w-full justify-center flex items-center whitespace-nowrap transition duration-150 ease-in-out font-medium rounded-xl px-4 py-3  text-zinc-900 bg-gradient-to-r from-white/80 via-white to-white/80 hover:bg-white group" onClick={getstarted}>Get Started <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3 tracking-normal text-primary-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+              <a className="w-full transition duration-150 ease-in-out bg-opacity-25 text-zinc-200 hover:text-white bg-zinc-900 hover:bg-opacity-30" target="_blank" href="https://github.com/NeerajsGithub">Star on GitHub</a>
             </div>
           </nav>
         </div>
       </section>
 
-      <nav className="flex flex-col px-10 xl:flex-row lg:flex-row gap-10">
+      <nav className="flex flex-col px-5 xl:flex-row lg:flex-row gap-10">
         <div className="cursor-pointer">
           <TextRevealCard
             className="mb-5"
@@ -93,18 +98,12 @@ export default function Home() {
         </div>
 
         <div className="cursor-pointer">
-          <form onSubmit={joinGame}>
-            <TextRevealCard
-              className="mb-5"
-              text="Join the excitement!"
-              revealText=""
-            ><TextRevealCardTitle>
-            Join Game
-          </TextRevealCardTitle>
-          <TextRevealCardDescription>
-            Enter your invite code and join your friends to battle them in a
+          <form onSubmit={joinGame} className="mb-5 bg-[#1d1c20] flex flex-col gap-3 border border-white/[0.08] max-w-[40rem] rounded-lg p-8 relative overflow-hidden">
+          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">Join Game</h1>
+            <p className="text-md font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">
+              Enter your invite code and join your friends to battle them in a
             typing race. Let the best person win!
-          </TextRevealCardDescription>
+            </p>
               <Input
                 type="text"
                 className="bg-[#1d1c20] border border-gray-600 mt-4 "
@@ -114,7 +113,6 @@ export default function Home() {
               <Button type="submit" className="mt-3 w-full">
                 Join Game
               </Button>
-            </TextRevealCard>
           </form>
         </div>
       </nav>
